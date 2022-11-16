@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:mentai/Screens/LoginScreen/loginscreen.dart';
 import 'package:mentai/Screens/MyStatistics/MyStatistics.dart';
+import 'package:camera/camera.dart';
 import 'package:mentai/Screens/OnboardingScreen/OnboardingScreen.dart';
 import 'package:mentai/navbar_activity.dart';
 
-void main() {
+List<CameraDescription>? cameras;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
+
   runApp(const MyApp());
 }
 
