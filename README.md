@@ -1,11 +1,12 @@
 
 # ment-Ai
 
-Public Repo for the submission of final project for HackZon 2022
+[Public Repo for the submission of final project for HackZon 2022]
+
 
 ## Description
 
-Ment-AI is a tracker for mood and mental health. It allows user to take a selfie per day which will be classified as one of the several emotions listed by an AI model and will then be used to generate statistical data about the users mood and mental health.
+Ment-AI is an Ai model trained with 200+ sample faces embeded in a well designed Flutter app with careful consideration of user requirement and use case. The app implements Onboarding Screen to help user navigate and understand the enviroment; provides users with authentication to store their data securely. The predication provided by AI model will be used to generate statistical data about the users' mood and mental health.
 
 
 
@@ -22,26 +23,31 @@ Ment-AI is a tracker for mood and mental health. It allows user to take a selfie
 
 ### Screenshots
 
-- Onboarding Screen
+| Onboarding 1 | Onboarding 2 | Onboarding 3 |
+|:-:|:-:|:-:|
+| ![Onboarding 1](https://github.com/beSaif/Hackzon-2022---Dart-Vader/blob/main/assets/Screenshots/onboarding_1.png?raw=true) | ![Onboarding 2](https://github.com/beSaif/Hackzon-2022---Dart-Vader/blob/main/assets/Screenshots/onboarding_2.png?raw=true) | ![Onboarding 3](https://github.com/beSaif/Hackzon-2022---Dart-Vader/blob/main/assets/Screenshots/onboarding_3.png) |
 
-<img width="343" alt="Screenshot 2022-11-16 at 10 49 06 PM" src="https://user-images.githubusercontent.com/110286289/202251719-b8359338-1ba7-425e-9f9d-30e5b4b9be5d.png">
+| Login | Sign Up |
+|:-:|:-:|
+| ![Login](https://github.com/beSaif/Hackzon-2022---Dart-Vader/blob/main/assets/Screenshots/login.png?raw=true) | ![Sign Up](https://github.com/beSaif/Hackzon-2022---Dart-Vader/blob/main/assets/Screenshots/signUp.png?raw=true) |
 
-- Login
-
-<img width="343" alt="Screenshot 2022-11-16 at 10 49 46 PM" src="https://user-images.githubusercontent.com/110286289/202251784-8f7b13c6-23d2-489e-ae9b-9fdea968e3ca.png">
-
-- Home Screen
-
-<img width="343" alt="Screenshot 2022-11-16 at 10 50 27 PM" src="https://user-images.githubusercontent.com/110286289/202251828-025c6e66-d140-4a2b-9068-33c6a5b6c56c.png">
-
-
-Profile Screen
-
-<img width="343" alt="Screenshot 2022-11-16 at 10 50 36 PM" src="https://user-images.githubusercontent.com/110286289/202251888-9f8a5b69-6417-41ce-bfaa-3e7a967ed098.png">
+| Home | Profile |
+|:-:|:-:|
+| ![Login](https://github.com/beSaif/Hackzon-2022---Dart-Vader/blob/main/assets/Screenshots/home.jpg?raw=true) | ![Sign Up](https://github.com/beSaif/Hackzon-2022---Dart-Vader/blob/main/assets/Screenshots/profile.png?raw=true) |
 
 
-Statistics Screen
+| Your Moods | My Statistics |
+|:-:|:-:|
+| ![Moods](https://github.com/beSaif/Hackzon-2022---Dart-Vader/blob/main/assets/Screenshots/your_mood.jpg?raw=true) | ![Statistics](https://github.com/beSaif/Hackzon-2022---Dart-Vader/blob/main/assets/Screenshots/my_statistics.png?raw=true) |
 
-<img width="343" alt="Screenshot 2022-11-16 at 10 50 48 PM" src="https://user-images.githubusercontent.com/110286289/202251925-07f562a7-5543-4316-81ba-15b413372e75.png">
+## Additions & Resources
+- [Teachable Machine](https://teachablemachine.withgoogle.com/train) by Google - This tool was used to train the AI. 
+- [Data Set](https://github.com/neta000/emotion_detection_model/tree/master/dataset) - Set of data, ie, faces that used to train the AI.
+- [Flutter Tflite](https://pub.dev/packages/tflite_flutter) - Used to implement the Tenserflow AI model in the Flutter App.
 
+## Disclaimer
+All the users data are stored only locally and no information is shared across the internet. 
 
+## Developers
+- [Saifudeen Hisham K M](github.com/beSaif/)
+- [Jumainah Khan](github.com/jumainahkhan/)
