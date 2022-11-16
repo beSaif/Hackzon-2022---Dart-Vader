@@ -7,7 +7,7 @@ class OtherController extends GetxController {
   TabController? tabController;
 
   final PersistentTabController navBarController =
-      PersistentTabController(initialIndex: 0);
+      PersistentTabController(initialIndex: 1);
 
   void updateNavBarController(int index) {
     navBarController.index = index;
