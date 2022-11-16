@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_image/flutter_native_image.dart';
 import 'package:mentai/Screens/CapturedImageScreen/CapturedImageScreen.dart';
 import 'package:mentai/main.dart';
 
@@ -31,10 +28,10 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
       if (e is CameraException) {
         switch (e.code) {
           case 'CameraAccessDenied':
-            print('User denied camera access.');
+            debugPrint('User denied camera access.');
             break;
           default:
-            print('Handle other errors.');
+            debugPrint('Handle other errors.');
             break;
         }
       }
@@ -76,7 +73,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
             borderRadius: BorderRadius.circular(30),
           ),
           child: IconButton(
-            icon: Icon(Icons.camera_alt, size: 45, color: Colors.white),
+            icon: const Icon(Icons.camera_alt, size: 45, color: Colors.white),
             color: Colors.blue,
             onPressed: cameraController != null &&
                     cameraController.value.isInitialized &&
@@ -106,7 +103,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
         setState(() {
           imageFile = file;
           imageExist = true;
-          print(imageFile);
+          //print(imageFile);
           // Show dialogue
 
           // videoController?.dispose();

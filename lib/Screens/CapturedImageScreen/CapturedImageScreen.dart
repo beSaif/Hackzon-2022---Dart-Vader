@@ -1,7 +1,4 @@
-import 'package:cross_file/src/types/interface.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:mentai/Screens/CapturedImageScreen/components/capturedImageScreenBody.dart';
 
 class CapturedImageScreen extends StatefulWidget {
@@ -17,7 +14,7 @@ class _CapturedImageScreenState extends State<CapturedImageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Captured Image'),
+        title: const Text('Captured Image'),
       ),
       body: CapturedImageScreenBody(imageFile: widget.imageFile),
     );

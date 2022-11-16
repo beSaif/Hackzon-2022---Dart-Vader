@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:mentai/navbar_activity.dart';
+import 'package:mentai/Screens/OnboardingScreen/OnboardingScreen.dart';
 
 List<CameraDescription>? cameras;
 
@@ -21,8 +21,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const NavbarActivity(),
-      //home: const NavbarActivity(),
+      // home: const LoginScreen(),
+
+      home: OnBoardingPage(),
     );
   }
 }
