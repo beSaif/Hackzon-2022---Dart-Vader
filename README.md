@@ -1,15 +1,15 @@
 
-# mentai
+# ment-Ai
 
 Public Repo for the submission of final project for HackZon 2022
 
-#Description
+## Description
 
 Ment-AI is a tracker for mood and mental health. It allows user to take a selfie per day which will be classified as one of the several emotions listed by an AI model and will then be used to generate statistical data about the users mood and mental health.
 
 
 
-#Steps of execution of the project:
+### Steps of execution of the project:
 
 
 1. Onboarding
@@ -20,17 +20,18 @@ Ment-AI is a tracker for mood and mental health. It allows user to take a selfie
 6. Profile Screen has statistics
 7. Close of the application
 
-#Screenshots
+### Screenshots
 
-Onboarding Screen
+- Onboarding Screen
 
 <img width="343" alt="Screenshot 2022-11-16 at 10 49 06 PM" src="https://user-images.githubusercontent.com/110286289/202251719-b8359338-1ba7-425e-9f9d-30e5b4b9be5d.png">
 
-Login
+- Login
 
 <img width="343" alt="Screenshot 2022-11-16 at 10 49 46 PM" src="https://user-images.githubusercontent.com/110286289/202251784-8f7b13c6-23d2-489e-ae9b-9fdea968e3ca.png">
 
-Home Screen
+- Home Screen
+
 <img width="343" alt="Screenshot 2022-11-16 at 10 50 27 PM" src="https://user-images.githubusercontent.com/110286289/202251828-025c6e66-d140-4a2b-9068-33c6a5b6c56c.png">
 
 
