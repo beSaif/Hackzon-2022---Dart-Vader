@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentai/Screens/LoginScreen/loginscreen.dart';
+import 'package:mentai/Screens/MyStatistics/MyStatistics.dart';
 import 'package:mentai/Screens/OnboardingScreen/OnboardingScreen.dart';
 import 'package:mentai/navbar_activity.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: const LoginScreen(),
 
-      home: OnBoardingPage(),
+      home: NavbarActivity(),
     );
   }
 }
