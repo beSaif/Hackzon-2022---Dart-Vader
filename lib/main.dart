@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mentai/Screens/HomeScreen/home_screen.dart';
 import 'package:mentai/navbar_activity.dart';
+import 'package:mentai/Screens/LoginScreen/loginscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'ment-Ai',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      debugShowCheckedModeBanner: false,
-      home: const NavbarActivity(),
+      home: const LoginScreen(),
     );
   }
 }
