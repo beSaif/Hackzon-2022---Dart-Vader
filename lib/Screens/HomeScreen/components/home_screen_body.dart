@@ -1,7 +1,14 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:mentai/Screens/CapturedImageScreen/CapturedImageScreen.dart';
+import 'package:mentai/Screens/CapturedImageScreen/components/capturedImageScreenBody.dart';
 import 'package:mentai/main.dart';
+import 'dart:io';
+
+import 'package:camera/camera.dart';
+import 'package:flutter/material.dart';
+import 'package:mentai/main.dart';
+import 'package:tflite/tflite.dart';
 
 class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({super.key});
@@ -11,55 +18,120 @@ class HomeScreenBody extends StatefulWidget {
 }
 
 class _HomeScreenBodyState extends State<HomeScreenBody> {
-  late CameraController controller;
-  XFile? imageFile;
-  bool imageExist = false;
+  CameraImage? cameraImage;
+  CameraController? cameraController;
+  String output = '';
 
   @override
   void initState() {
     super.initState();
-    controller = CameraController(cameras![0], ResolutionPreset.max);
-    controller.initialize().then((_) {
+    loadCamera();
+    loadModel();
+  }
+
+  loadCamera() {
+    cameraController = CameraController(cameras![0], ResolutionPreset.high);
+    cameraController!.initialize().then((value) {
       if (!mounted) {
         return;
-      }
-      setState(() {});
-    }).catchError((Object e) {
-      if (e is CameraException) {
-        switch (e.code) {
-          case 'CameraAccessDenied':
-            debugPrint('User denied camera access.');
-            break;
-          default:
-            debugPrint('Handle other errors.');
-            break;
-        }
+      } else {
+        cameraController!.initialize().then((_) {
+          if (!mounted) {
+            return;
+          }
+          setState(() {});
+        }).catchError((Object e) {
+          if (e is CameraException) {
+            switch (e.code) {
+              case 'CameraAccessDenied':
+                debugPrint('User denied camera access.');
+                break;
+              default:
+                debugPrint('Handle other errors.');
+                break;
+            }
+          }
+        });
+        // setState(() {
+        //   cameraController!.startImageStream((imageStream) {
+        //     cameraImage = imageStream;
+        //     runModel();
+        //   });
+        // });
       }
     });
   }
 
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
+  runModel() async {
+    if (cameraImage != null) {
+      var predictions = await Tflite.runModelOnFrame(
+          bytesList: cameraImage!.planes.map((plane) {
+            return plane.bytes;
+          }).toList(),
+          imageHeight: cameraImage!.height,
+          imageWidth: cameraImage!.width,
+          imageMean: 127.5,
+          imageStd: 127.5,
+          rotation: 90,
+          numResults: 2,
+          threshold: 0.1,
+          asynch: true);
+      predictions!.forEach((element) {
+        print("element: $element");
+
+        setState(() {
+          output = element['label'];
+        });
+      });
+      print("prediction: $predictions");
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => CapturedImageScreen(
+                    predictions: predictions,
+                  )));
+    }
+  }
+
+  loadModel() async {
+    await Tflite.loadModel(
+      model: "assets/AiModel/FER13.tflite",
+      labels: "assets/AiModel/FER13.txt",
+    );
+  }
+
+  void onTakePictureButtonPressed() async {
+    setState(() {
+      cameraController!.startImageStream((imageStream) {
+        cameraImage = imageStream;
+      });
+    });
+    runModel();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.value.isInitialized) {
-      return Container();
-    }
     return Stack(
       children: [
-        SizedBox(height: double.infinity, child: CameraPreview(controller)),
+        Padding(
+          padding: EdgeInsets.all(0),
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: !cameraController!.value.isInitialized
+                ? Container()
+                : AspectRatio(
+                    aspectRatio: cameraController!.value.aspectRatio,
+                    child: CameraPreview(cameraController!),
+                  ),
+          ),
+        ),
         Positioned.fill(bottom: 50, child: _captureControlRowWidget())
       ],
     );
   }
 
   Widget _captureControlRowWidget() {
-    final CameraController? cameraController = controller;
-
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -75,75 +147,12 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
           child: IconButton(
             icon: const Icon(Icons.camera_alt, size: 45, color: Colors.white),
             color: Colors.blue,
-            onPressed: cameraController != null &&
-                    cameraController.value.isInitialized &&
-                    !cameraController.value.isRecordingVideo
-                ? onTakePictureButtonPressed
-                : null,
+            onPressed:
+                cameraController != null ? onTakePictureButtonPressed : null,
           ),
         ),
-        // Visibility(
-        //     visible: true,
-        //     child: Container(
-        //       height: 50,
-        //       width: 50,
-        //       child: imageFile!.path != null
-        //           ? Image.file(File(imageFile!.path))
-        //           : Container(),
-        //     ))
       ],
     );
-  }
-
-  void onTakePictureButtonPressed() {
-    // show circular progess indicator
-
-    takePicture().then((XFile? file) {
-      if (mounted) {
-        setState(() {
-          imageFile = file;
-          imageExist = true;
-          //print(imageFile);
-          // Show dialogue
-
-          // videoController?.dispose();
-          // videoController = null;
-        });
-        if (file != null) {
-          //showInSnackBar('Picture saved to ${file.path}');
-          showGeneralDialog(
-              context: context,
-              pageBuilder: (BuildContext context, Animation animation,
-                  Animation secondaryAnimation) {
-                return CapturedImageScreen(
-                  imageFile: imageFile!.path,
-                );
-              });
-        }
-      }
-    });
-  }
-
-  Future<XFile?> takePicture() async {
-    final CameraController? cameraController = controller;
-    cameraController!.setFlashMode(FlashMode.off);
-    if (cameraController == null || !cameraController.value.isInitialized) {
-      showInSnackBar('Error: select a camera first.');
-      return null;
-    }
-
-    if (cameraController.value.isTakingPicture) {
-      // A capture is already pending, do nothing.
-      return null;
-    }
-
-    try {
-      final XFile file = await cameraController.takePicture();
-      return file;
-    } on CameraException catch (e) {
-      _showCameraException(e);
-      return null;
-    }
   }
 
   void showInSnackBar(String message) {
