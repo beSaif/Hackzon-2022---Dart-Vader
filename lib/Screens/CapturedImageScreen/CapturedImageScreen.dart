@@ -1,9 +1,10 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:mentai/Screens/CapturedImageScreen/components/capturedImageScreenBody.dart';
 
 class CapturedImageScreen extends StatefulWidget {
-  final String imageFile;
-  const CapturedImageScreen({super.key, required this.imageFile});
+  final List<dynamic> predictions;
+  const CapturedImageScreen({super.key, required this.predictions});
 
   @override
   State<CapturedImageScreen> createState() => _CapturedImageScreenState();
@@ -14,9 +15,9 @@ class _CapturedImageScreenState extends State<CapturedImageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Captured Image'),
+        title: const Text('Statistics'),
       ),
-      body: CapturedImageScreenBody(imageFile: widget.imageFile),
+      body: CapturedImageScreenBody(predictions: widget.predictions),
     );
   }
 }
