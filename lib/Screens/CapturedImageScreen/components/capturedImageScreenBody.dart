@@ -28,7 +28,6 @@ class _CapturedImageScreenBodyState extends State<CapturedImageScreenBody> {
 
   @override
   void initState() {
-    // TODO: implement initState
     converData();
     super.initState();
   }

@@ -12,7 +12,7 @@ class _HelpState extends State<Help> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: HelpBody(),
+      body: SafeArea(child: HelpBody()),
     );
   }
 }

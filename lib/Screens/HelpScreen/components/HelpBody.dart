@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 class HelpBody extends StatelessWidget {
   const HelpBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          IconButton(
-              onPressed: (() {
-                Navigator.pop(context);
-              }),
-              icon: const Icon(Icons.chevron_left)),
-          const Center(child: Text('Help')),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(
+          height: 20,
+        ),
+        IconButton(
+            onPressed: (() {
+              Navigator.pop(context);
+            }),
+            icon: const Icon(Icons.chevron_left)),
+        Center(
+            child: Text('Help',
+                style: GoogleFonts.poppins(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ))),
+        Expanded(
+            child: Lottie.asset(
+                'assets/Animations/77148-construction-men-at-work.json'))
+      ],
     );
   }
 }
