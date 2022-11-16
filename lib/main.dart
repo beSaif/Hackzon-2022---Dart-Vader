@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mentai/Screens/LoginScreen/loginscreen.dart';
+import 'package:mentai/Screens/OnboardingScreen/OnboardingScreen.dart';
 import 'package:mentai/navbar_activity.dart';
 
 void main() {
@@ -15,8 +17,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const NavbarActivity(),
-      //home: const NavbarActivity(),
+      // home: const LoginScreen(),
+
+      home: OnBoardingPage(),
     );
   }
 }
