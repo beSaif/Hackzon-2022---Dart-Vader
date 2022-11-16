@@ -6,7 +6,7 @@ import 'package:mentai/Screens/AppSettingsScreen/AppSettings.dart';
 import 'package:mentai/Screens/HelpScreen/Help.dart';
 import 'package:mentai/Screens/InviteScreen/Invite.dart';
 import 'package:mentai/Screens/MyStatistics/MyStatistics.dart';
-import 'package:mentai/Screens/ProMemberScreen/ProMember.dart';
+import 'package:mentai/Screens/RealtimeScreen/RealTimeScreen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -165,7 +165,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const ProMember(),
+                                builder: (context) => const RealTimeScreen(),
                               ));
                         },
                         child: Row(
@@ -188,13 +188,68 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             const SizedBox(
                               width: 15,
                             ),
-                            Text(
-                              'Become a Pro Member',
-                              style: GoogleFonts.poppins(
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Emotion Recognition',
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.black,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      height: 20,
+                                      width: 60,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Colors.blue[100]),
+                                      child: Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 0, right: 0),
+                                          child: Text(
+                                            'Real-Time',
+                                            style: GoogleFonts.poppins(
+                                              fontSize: 8,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Container(
+                                      height: 20,
+                                      width: 60,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Colors.blue[100]),
+                                      child: Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 0, right: 0),
+                                          child: Text(
+                                            'Beta',
+                                            style: GoogleFonts.poppins(
+                                              fontSize: 8,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ],
                             ),
                             const SizedBox(
                               width: 67,

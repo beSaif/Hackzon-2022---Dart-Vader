@@ -12,7 +12,7 @@ class _AppSettingsState extends State<AppSettings> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: AppSettingsBody(),
+      body: SafeArea(child: AppSettingsBody()),
     );
   }
 }
