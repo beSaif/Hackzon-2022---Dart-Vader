@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mentai/GetX/users.dart';
 import 'package:mentai/main.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math' as math;
@@ -18,7 +20,17 @@ class CapturedImageScreenBody extends StatefulWidget {
 }
 
 class _CapturedImageScreenBodyState extends State<CapturedImageScreenBody> {
+  final UsersController usersController =
+      Get.put(UsersController(), permanent: false);
   List<Map<String, dynamic>> data = [];
+  List colors = [
+    Colors.blue[400],
+    Colors.red[400],
+    Colors.green[400],
+    Colors.orange[400],
+    Colors.yellow[400],
+    Colors.brown[400],
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,29 +40,36 @@ class _CapturedImageScreenBodyState extends State<CapturedImageScreenBody> {
       data.insert(i, {
         'domain': widget.predictions[i]['label'],
         'measure': widget.predictions[i]['confidence'],
-        'color': random
+        'color': colors[i]
       });
     }
     print(data);
-    return Scaffold(
-      body: Column(
+    usersController.updateData(data);
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          IconButton(
+              onPressed: (() {
+                Navigator.pop(context);
+              }),
+              icon: const Icon(Icons.chevron_left)),
+          Center(
+            child: Text(
+              'Your Mood',
+              style: GoogleFonts.poppins(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           SizedBox(
             height: 400,
             child: DChartPie(
               data: data,
               fillColor: (pieData, index) {
-                // switch (pieData['domain']) {
-                //   case 'Flutter':
-                //     return Colors.green[400];
-                //   case 'React Native':
-                //     return Colors.orange[400];
-                //   case 'Ionic':
-                //     return Colors.blue[400];
-                //   default:
-                //     return Colors.red[400];
-                // }
-
                 return data[index!]['color'];
               },
               donutWidth: 80,

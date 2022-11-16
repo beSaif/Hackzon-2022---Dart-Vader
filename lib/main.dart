@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mentai/Screens/LoginScreen/loginscreen.dart';
 import 'package:mentai/Screens/MyStatistics/MyStatistics.dart';
 import 'package:camera/camera.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: const LoginScreen(),
 
-      home: NavbarActivity(),
+      home: OnBoardingPage(),
     );
   }
 }

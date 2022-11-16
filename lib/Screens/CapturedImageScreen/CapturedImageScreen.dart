@@ -14,10 +14,8 @@ class _CapturedImageScreenState extends State<CapturedImageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Statistics'),
-      ),
-      body: CapturedImageScreenBody(predictions: widget.predictions),
+      body: SafeArea(
+          child: CapturedImageScreenBody(predictions: widget.predictions)),
     );
   }
 }
