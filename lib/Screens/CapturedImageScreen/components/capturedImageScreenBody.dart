@@ -1,14 +1,8 @@
-import 'dart:io';
-
-import 'package:camera/camera.dart';
 import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mentai/GetX/users.dart';
-import 'package:mentai/main.dart';
-import 'package:tflite/tflite.dart';
-import 'dart:math' as math;
 
 class CapturedImageScreenBody extends StatefulWidget {
   final List<dynamic> predictions;
@@ -34,8 +28,6 @@ class _CapturedImageScreenBodyState extends State<CapturedImageScreenBody> {
 
   @override
   Widget build(BuildContext context) {
-    Color random =
-        Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
     for (int i = 0; i < widget.predictions.length; i++) {
       data.insert(i, {
         'domain': widget.predictions[i]['label'],
@@ -43,7 +35,7 @@ class _CapturedImageScreenBodyState extends State<CapturedImageScreenBody> {
         'color': colors[i]
       });
     }
-    print(data);
+
     usersController.updateData(data);
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -92,10 +84,10 @@ class _CapturedImageScreenBodyState extends State<CapturedImageScreenBody> {
                             height: 15,
                             width: 30,
                             decoration: BoxDecoration(
-                                color: data[index!]['color'],
+                                color: data[index]['color'],
                                 borderRadius: BorderRadius.circular(20)),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Text(

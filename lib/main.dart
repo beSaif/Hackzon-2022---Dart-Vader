@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mentai/Screens/LoginScreen/loginscreen.dart';
-import 'package:mentai/Screens/MyStatistics/MyStatistics.dart';
 import 'package:camera/camera.dart';
 import 'package:mentai/Screens/OnboardingScreen/OnboardingScreen.dart';
 import 'package:mentai/navbar_activity.dart';
@@ -27,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: const LoginScreen(),
 
-      home: OnBoardingPage(),
+      home: const OnBoardingPage(),
     );
   }
 }

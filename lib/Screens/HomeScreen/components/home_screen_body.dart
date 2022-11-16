@@ -1,13 +1,8 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:mentai/Screens/CapturedImageScreen/CapturedImageScreen.dart';
-import 'package:mentai/Screens/CapturedImageScreen/components/capturedImageScreenBody.dart';
 import 'package:mentai/main.dart';
-import 'dart:io';
 
-import 'package:camera/camera.dart';
-import 'package:flutter/material.dart';
-import 'package:mentai/main.dart';
 import 'package:tflite/tflite.dart';
 
 class HomeScreenBody extends StatefulWidget {
@@ -76,14 +71,14 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
           numResults: 2,
           threshold: 0.1,
           asynch: true);
-      predictions!.forEach((element) {
-        print("element: $element");
+      for (var element in predictions!) {
+        debugPrint("element: $element");
 
         setState(() {
           output = element['label'];
         });
-      });
-      print("prediction: $predictions");
+      }
+      debugPrint("prediction: $predictions");
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -114,8 +109,8 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.all(0),
-          child: Container(
+          padding: const EdgeInsets.all(0),
+          child: SizedBox(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: !cameraController!.value.isInitialized
