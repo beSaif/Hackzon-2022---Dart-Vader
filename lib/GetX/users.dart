@@ -12,4 +12,11 @@ class UsersController extends GetxController {
     users.addEntries(newuser.entries);
     debugPrint('Added user $user');
   }
+
+  List<Map<String, dynamic>> data = [];
+
+  void updateData(var newData) {
+    data = newData;
+    debugPrint('Added data $newData');
+  }
 }

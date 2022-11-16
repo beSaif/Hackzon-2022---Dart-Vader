@@ -8,10 +8,10 @@ class MyStatisticsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> data = [
-      {'domain': 'Flutter', 'measure': 28, 'color': Colors.green[400]},
-      {'domain': 'React Native', 'measure': 27, 'color': Colors.orange[400]},
-      {'domain': 'Ionic', 'measure': 20, 'color': Colors.blue[400]},
-      {'domain': 'Cordova', 'measure': 15, 'color': Colors.red[400]},
+      {'domain': 'Anger', 'measure': 28, 'color': Colors.green[400]},
+      {'domain': 'Sad', 'measure': 27, 'color': Colors.orange[400]},
+      {'domain': 'Happy', 'measure': 20, 'color': Colors.blue[400]},
+      {'domain': 'Disgust', 'measure': 15, 'color': Colors.red[400]},
     ];
 
     return Scaffold(
