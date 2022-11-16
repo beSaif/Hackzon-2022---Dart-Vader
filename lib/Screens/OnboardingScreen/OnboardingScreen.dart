@@ -1,29 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:mentai/Screens/HomeScreen/home_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mentai/Screens/LoginScreen/loginscreen.dart';
-
-void main() => runApp(App());
-
-class App extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent),
-    );
-
-    return MaterialApp(
-      title: 'Introduction screen',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: OnBoardingPage(),
-    );
-  }
-}
 
 class OnBoardingPage extends StatefulWidget {
   @override
@@ -34,8 +15,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => HomeScreen()),
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (_) => const LoginScreen()),
     );
   }
 
@@ -69,11 +50,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       child: IntroductionScreen(
         key: introKey,
         globalBackgroundColor: Colors.white,
-        globalHeader: Align(
+        globalHeader: const Align(
           alignment: Alignment.topRight,
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(top: 16, right: 16),
+              padding: EdgeInsets.only(top: 16, right: 16),
             ),
           ),
         ),
@@ -83,15 +64,15 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           child: ElevatedButton(
             style: ButtonStyle(
                 backgroundColor:
-                    MaterialStatePropertyAll<Color?>(Colors.blue[300])),
+                    MaterialStatePropertyAll<Color?>(Colors.blue[500])),
             child: const Text(
               'Let\'s go right away!',
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
             ),
-            onPressed: () => Navigator.push(
+            onPressed: () => Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => LoginScreen(),
+                  builder: (context) => const LoginScreen(),
                 )),
           ),
         ),
