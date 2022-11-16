@@ -34,4 +34,11 @@ class UsersController extends GetxController {
     data = newData;
     debugPrint('Added data $newData');
   }
+
+  void resetUser() {
+    photosTaken = 0;
+    streaks = 0;
+    data = [];
+    update();
+  }
 }

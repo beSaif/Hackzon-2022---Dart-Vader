@@ -13,6 +13,10 @@ class OtherController extends GetxController {
     navBarController.index = index;
   }
 
+  void disposeNavBarController() {
+    navBarController.dispose();
+  }
+
   void setTopPadding(topDevPadding) {
     topPadding = topDevPadding;
   }
