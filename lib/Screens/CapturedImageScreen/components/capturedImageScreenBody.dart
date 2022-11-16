@@ -27,7 +27,13 @@ class _CapturedImageScreenBodyState extends State<CapturedImageScreenBody> {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    // TODO: implement initState
+    converData();
+    super.initState();
+  }
+
+  converData() {
     for (int i = 0; i < widget.predictions.length; i++) {
       data.insert(i, {
         'domain': widget.predictions[i]['label'],
@@ -37,6 +43,10 @@ class _CapturedImageScreenBodyState extends State<CapturedImageScreenBody> {
     }
 
     usersController.updateData(data);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(

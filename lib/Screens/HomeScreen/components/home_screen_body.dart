@@ -1,5 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mentai/GetX/users.dart';
 import 'package:mentai/Screens/CapturedImageScreen/CapturedImageScreen.dart';
 import 'package:mentai/main.dart';
 
@@ -17,9 +19,13 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
   CameraController? cameraController;
   String output = '';
 
+  final UsersController usersController =
+      Get.put(UsersController(), permanent: false);
+
   @override
   void initState() {
     super.initState();
+    usersController.updateStreaks();
     loadCamera();
     loadModel();
   }
@@ -79,6 +85,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
         });
       }
       debugPrint("prediction: $predictions");
+      usersController.updatePhotosTaken();
       Navigator.push(
           context,
           MaterialPageRoute(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mentai/GetX/users.dart';
 import 'package:mentai/Screens/AppSettingsScreen/AppSettings.dart';
 import 'package:mentai/Screens/HelpScreen/Help.dart';
 import 'package:mentai/Screens/InviteScreen/Invite.dart';
@@ -14,6 +16,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final UsersController usersController =
+      Get.put(UsersController(), permanent: false);
   final Image image = Image.asset('assets/Images/My project.png');
   @override
   Widget build(BuildContext context) {
@@ -29,38 +33,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SizedBox(
                     height: 25,
                   ),
-                  // GestureDetector(
-                  //   onTap: () {},
-                  //   child: Container(
-                  //     height: 25,
-                  //     width: 70,
-                  //     decoration: BoxDecoration(
-                  //         borderRadius: BorderRadius.circular(20),
-                  //         color: Colors.blue[100]),
-                  //     child: Row(
-                  //       children: [
-                  //         SizedBox(
-                  //           width: 7,
-                  //         ),
-                  //         Icon(
-                  //           Icons.settings,
-                  //           color: Colors.blue[300],
-                  //           size: 18,
-                  //         ),
-                  //         SizedBox(
-                  //           width: 5,
-                  //         ),
-                  //         Text(
-                  //           'Edit',
-                  //           style: GoogleFonts.poppins(
-                  //             color: Colors.blue[300],
-                  //             fontSize: 15,
-                  //           ),
-                  //         )
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
               const SizedBox(
@@ -127,14 +99,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   Column(
                     children: [
-                      Text(
-                        '147',
-                        style: GoogleFonts.lato(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      GetBuilder<UsersController>(builder: (context) {
+                        return Text(
+                          usersController.photosTaken.toString(),
+                          style: GoogleFonts.lato(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        );
+                      }),
                       Text(
                         'Photos Taken',
                         style: GoogleFonts.poppins(
@@ -149,14 +123,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   Column(
                     children: [
-                      Text(
-                        '78',
-                        style: GoogleFonts.lato(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      GetBuilder<UsersController>(builder: (context) {
+                        return Text(
+                          usersController.streaks.toString(),
+                          style: GoogleFonts.lato(
+                            color: Colors.black,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        );
+                      }),
                       Text(
                         'Streaks Now',
                         style: GoogleFonts.poppins(
