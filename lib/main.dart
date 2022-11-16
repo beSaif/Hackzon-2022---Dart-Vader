@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mentai/Screens/HomeScreen/home_screen.dart';
+import 'package:mentai/navbar_activity.dart';
 import 'package:mentai/Screens/LoginScreen/loginscreen.dart';
 
 void main() {

@@ -4,6 +4,7 @@ import 'package:flutter_login/flutter_login.dart';
 import 'package:get/get.dart';
 import 'package:mentai/GetX/users.dart';
 import 'package:mentai/Screens/HomeScreen/home_screen.dart';
+import 'package:mentai/navbar_activity.dart';
 
 class LoginScreenBody extends StatefulWidget {
   const LoginScreenBody({super.key});
@@ -62,7 +63,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> {
       onSignup: _signupUser,
       onSubmitAnimationCompleted: () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => const NavbarActivity(),
         ));
       },
       onRecoverPassword: _recoverPassword,
