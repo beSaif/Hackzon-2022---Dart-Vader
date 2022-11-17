@@ -20,23 +20,23 @@ Ment-AI is an Ai model trained with 200+ sample faces embeded in a well designed
 
 | Onboarding 1                                         | Onboarding 2                                                                                                                | Onboarding 3                                         |
 |:----------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------:|
-| ![Onboarding 1](assets\Screenshots/onboarding_1.png) | ![Onboarding 2](https://github.com/beSaif/Hackzon-2022---Dart-Vader/blob/main/assets/Screenshots/onboarding_2.png?raw=true) | ![Onboarding 3](assets\Screenshots/onboarding_3.png) |
+| ![Onboarding 1](assets/Screenshots/onboarding_1.png) | ![Onboarding 2](assets/Screenshots/onboarding_2.png) | ![Onboarding 3](assets/Screenshots/onboarding_3.png) |
 
 | Login                                  | Sign Up                                   |
 |:--------------------------------------:|:-----------------------------------------:|
-| ![Login](assets\Screenshots/login.png) | ![Sign Up](assets\Screenshots/signUp.png) |
+| ![Login](assets/Screenshots/login.png) | ![Sign Up](assets/Screenshots/signUp.png) |
 
 | Home                                  | Profile                                          |
 |:-------------------------------------:|:------------------------------------------------:|
-| ![Login](assets\Screenshots/home.jpg) | ![Sign Up](assets\Screenshots/profileScreen.png) |
+| ![Login](assets/Screenshots/home.jpg) | ![Sign Up](assets/Screenshots/profileScreen.png) |
 
 | Your Moods                                 | My Statistics                                       |
 |:------------------------------------------:|:---------------------------------------------------:|
-| ![Moods](assets\Screenshots/your_mood.jpg) | ![Statistics](assets\Screenshots/my_statistics.png) |
+| ![Moods](assets/Screenshots/your_mood.jpg) | ![Statistics](assets/Screenshots/my_statistics.png) |
 
 ## Ai Model Training
 
-![](assets\Screenshots/trainingAi.png)
+![](assets/Screenshots/trainingAi.png)
 
 ## Additions & Resources
 
